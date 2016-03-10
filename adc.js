@@ -12,7 +12,7 @@ var readADC = function() {
             return;
         }
         voltage = value;
-        console.error(err.message);.log('Analog Value: ' + value); // value is floating point number between 0 and 1.
+        console.log('Analog Value: ' + value); // value is floating point number between 0 and 1.
         console.log('Voltage: ' + value * 1.8 + ' V')
     });
 };
