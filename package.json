@@ -11,7 +11,8 @@
   },
   "version": "0.1.0",
   "dependencies": {
-    "octalbonescript": "1.1.1"
+      "octalbonescript": "1.1.1",
+      "express": "latest"
   },
   "engines": {
       "node": "0.10.38"
