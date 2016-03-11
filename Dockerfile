@@ -1,5 +1,5 @@
 #FROM resin/beaglebone-node:0.10.41-20160218
-FROM resin/beaglebone-node
+FROM resin/beaglebone-node:0.12
 
 # Use apt-get to install any dependencies
 RUN apt-get update && apt-get install -yq \
