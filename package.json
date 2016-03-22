@@ -9,9 +9,9 @@
         "prestart":"bash before-node-start.sh",
         "start": "node adc.js"
     },
-    "version": "0.1.0",
+    "version": "0.1.5",
     "dependencies": {
-        "octalbonescript": "latest",
+        "octalbonescript": "1.1.x",
         "express": "latest",
         "mqtt": "latest"
     }
