@@ -54,7 +54,8 @@ client.on('connect', function() {
 });
 
 var sendMsg = function () {
-    client.publish(process.env.AIO_FEED, voltage);
+    var voltageMeasurement = voltage*10
+    client.publish(process.env.AIO_FEED, ''+voltageMeasurement);
 }
 
 setInterval(sendMsg, 5000);
