@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -yq \
 
 WORKDIR /usr/src/app
 
+COPY owfs.conf /etc/owfs.conf
+
 # package.json is copied separately to enable better docker build caching
 COPY package.json /usr/src/app/package.json
 RUN DEBIAN_FRONTEND=noninteractive JOBS=MAX npm install --unsafe-perm --loglevel error
