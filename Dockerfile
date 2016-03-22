@@ -1,8 +1,10 @@
-FROM resin/beaglebone-node:0.12
-#FROM resin/beaglebone-node:4.3.2
+#FROM resin/beaglebone-node:0.12
+FROM resin/beaglebone-node:4.3.2
 
 # Use apt-get to install any dependencies
 RUN apt-get update && apt-get install -yq \
+    owfs \
+    mosquitto \
     cowsay && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
