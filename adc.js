@@ -1,20 +1,8 @@
-var b = require('octalbonescript'); //load the library
 console.log("starting ADC script...")
-  // no pinmode is required for analogRead as those pins are dedicated.
-var pin = 'P9_33'; //the pin to operate on
-
 var voltage = 0;
 
 var readADC = function() {
-    b.analogRead(pin, function(err, value) {
-        if (err) {
-            console.error(err.message);
-            return;
-        }
-        voltage = value;
-        console.log('Analog Value: ' + value); // value is floating point number between 0 and 1.
-        console.log('Voltage: ' + value * 1.8 + ' V')
-    });
+    voltage = Math.random()
 };
 
 setInterval(readADC, 3000);
@@ -51,11 +39,10 @@ client.on('connect', function() {
         console.warn(topic+': '+message.toString());
     });
 
+    var sendMsg = function () {
+        var voltageMeasurement = voltage*10
+        client.publish(process.env.AIO_FEED, ''+voltageMeasurement.toFixed(3));
+    }
+
+    setInterval(sendMsg, 5000);
 });
-
-var sendMsg = function () {
-    var voltageMeasurement = voltage*10
-    client.publish(process.env.AIO_FEED, ''+voltageMeasurement.toFixed(3));
-}
-
-setInterval(sendMsg, 5000);
