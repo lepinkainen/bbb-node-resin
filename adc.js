@@ -1,4 +1,6 @@
-console.log("starting ADC script...")
+console.log("starting automation manager...")
+
+// Fake GPIO handling
 var voltage = 0;
 
 var readADC = function() {
@@ -7,6 +9,7 @@ var readADC = function() {
 
 setInterval(readADC, 3000);
 
+// Webserver
 var express = require('express')
 var app = express()
 
@@ -22,6 +25,8 @@ var server = app.listen(80, function () {
     console.log('Example app listening at http://%s:%s', host, port)
 })
 
+
+// Feed MQTT data to adafruit.io
 console.warn(process.env.AIO_FEED)
 console.warn(process.env.AIO_USER+':'+process.env.AIO_KEY)
 
