@@ -3,7 +3,7 @@
     "description": "Home automation hub with BBB",
     "repository": {
         "type": "git",
-        "url": "https://github.com/shaunmulligan/beaglebone-adc-node.git"
+        "url": "https://github.com/lepinkainen/bbb-node-resin"
     },
     "scripts": {
         "prestart":"bash before-node-start.sh",
@@ -11,6 +11,7 @@
     },
     "version": "0.1.5",
     "dependencies": {
+        "onoff": "latest",
         "octalbonescript": "1.1.x",
         "express": "latest",
         "mqtt": "latest"
