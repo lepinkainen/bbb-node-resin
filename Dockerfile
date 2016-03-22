@@ -12,9 +12,6 @@ WORKDIR /usr/src/app
 
 COPY owfs.conf /etc/owfs.conf
 
-RUN mkdir -p /mnt/1wire
-#RUN owfs
-
 # package.json is copied separately to enable better docker build caching
 COPY package.json /usr/src/app/package.json
 RUN DEBIAN_FRONTEND=noninteractive JOBS=MAX npm install --unsafe-perm --loglevel error

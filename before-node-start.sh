@@ -2,3 +2,8 @@
 
 #use this script to launch anything you need before your node.js project launches.
 echo "Starting adc.js"
+
+mkdir -p /mnt/1wire
+/etc/init.d/owserver start
+owfs
+
