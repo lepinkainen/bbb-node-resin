@@ -6,12 +6,15 @@ RUN apt-get update && apt-get install -yq \
     owfs \
     mosquitto \
     dropbear \
+    supervisor \
     cowsay && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
 COPY owfs.conf /etc/owfs.conf
+
+RUN mkdir -p /mnt/1wire
 
 # package.json is copied separately to enable better docker build caching
 COPY package.json /usr/src/app/package.json

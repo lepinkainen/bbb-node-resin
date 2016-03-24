@@ -15,6 +15,5 @@
         "express": "latest",
         "mqtt": "latest",
         "owfs": "latest"
-        
     }
 }
