@@ -40,7 +40,7 @@ var intervalId = null;
 client.on('connect', function() {
     client.subscribe(process.env.AIO_FEED);
 
-    console.warn("Connected");
+    console.warn("Connected to adafruit.io");
 
     client.on('message', function (topic, message) {
         console.warn(topic+': '+message.toString());
@@ -52,6 +52,7 @@ client.on('connect', function() {
     }
 
     if(intervalId != null) {
+        console.warn("Cleared old interval ID")
         clearInteval(intervalId);
     }
 
