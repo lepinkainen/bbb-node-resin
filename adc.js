@@ -35,7 +35,7 @@ var client  = mqtt.connect({'host': 'io.adafruit.com',
                             'username': process.env.AIO_USER,
                             'password': process.env.AIO_KEY});
 
-var intervaliId = null;
+var intervalId = null;
 
 client.on('connect', function() {
     client.subscribe(process.env.AIO_FEED);
