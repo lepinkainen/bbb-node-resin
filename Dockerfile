@@ -5,6 +5,7 @@ FROM resin/beaglebone-node:4.3.2
 RUN apt-get update && apt-get install -yq \
     owfs \
     mosquitto \
+    mosquitto_clients \   # for testing only
     dropbear \
     supervisor \
     cowsay && \
@@ -12,7 +13,9 @@ RUN apt-get update && apt-get install -yq \
 
 WORKDIR /usr/src/app
 
-COPY owfs.conf /etc/owfs.conf
+COPY etc/* /etc/
+
+COPY supervisor/* /etc/supervisor/conf.d/
 
 RUN mkdir -p /mnt/1wire
 
