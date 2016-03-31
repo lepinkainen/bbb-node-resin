@@ -35,6 +35,8 @@ var client  = mqtt.connect({'host': 'io.adafruit.com',
                             'username': process.env.AIO_USER,
                             'password': process.env.AIO_KEY});
 
+var intervaliId = null;
+
 client.on('connect', function() {
     client.subscribe(process.env.AIO_FEED);
 
@@ -49,5 +51,9 @@ client.on('connect', function() {
         client.publish(process.env.AIO_FEED, ''+voltageMeasurement.toFixed(3));
     }
 
-    setInterval(sendMsg, 5000);
+    if(intervalId != null) {
+        clearInteval(intervalId);
+    }
+
+    intervalId = setInterval(sendMsg, 5000);
 });
