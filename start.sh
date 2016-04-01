@@ -5,4 +5,4 @@ export PASSWD=${PASSWD:=root}
 echo "root:$PASSWD" | chpasswd
 
 echo "Starting supervisor"
-supervisord -c /usr/local/etc/supervisord.conf
+supervisord -n -c /usr/local/etc/supervisord.conf
