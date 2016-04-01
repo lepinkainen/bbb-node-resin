@@ -18,22 +18,22 @@ RUN wget -O /tmp/influxdb_0.11.0-1_armhf.deb https://s3.amazonaws.com/influxdb/i
 # Change influxdb data to be stored in the persisting partition
 RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf
 
-# Create configuration for supervisord
-RUN echo_supervisord_conf > /usr/local/etc/supervisord.conf && \
-    echo "[include]" >> /usr/local/etc/supervisord.conf && \
-    echo "files = /app/supervisor/*.conf" >> /usr/local/etc/supervisord.conf
+# Configuration for supervisord
+COPY supervisord.conf /usr/local/etc/supervisord.conf
 
 # Our app will reside here
 WORKDIR /app
 
+# For owfs
 RUN mkdir -p /mnt/1wire
 
 # package.json is copied separately to enable better docker build caching
 COPY package.json /app/package.json
+# Install node dependencies from package.json
 RUN DEBIAN_FRONTEND=noninteractive JOBS=MAX npm install --unsafe-perm --loglevel error
 
 # copy all files to /app
 COPY . /app
 
-# start the node code and suppress npm warnings with "-s"
+# start the app
 CMD ["/app/start.sh"]
