@@ -4,6 +4,7 @@ FROM resin/beaglebone-node:4.3.2
 # Use apt-get to install any dependencies
 RUN apt-get update && apt-get install -yq \
     owfs \
+    ow-shell \
     python \
     mosquitto \
     mosquitto-clients \
