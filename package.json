@@ -1,19 +1,18 @@
 {
-    "author": "Riku Lindblad",
-    "name": "beaglebone-homeautomation",
-    "license": "MIT", 
-    "description": "Home automation hub with BBB",
-    "version": "0.1.5",
-
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/lepinkainen/bbb-node-resin"
-    },
-
-    "dependencies": {
-        "onoff": "latest",
-        "express": "latest",
-        "mqtt": "latest",
-        "owfs": "latest"
-    }
+  "author": "Riku Lindblad",
+  "name": "beaglebone-homeautomation",
+  "license": "MIT",
+  "description": "Home automation hub with BBB",
+  "version": "0.1.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lepinkainen/bbb-node-resin"
+  },
+  "dependencies": {
+    "beaglebone-dht": "0.0.3",
+    "express": "latest",
+    "mqtt": "latest",
+    "onoff": "latest",
+    "owfs": "latest"
+  }
 }
