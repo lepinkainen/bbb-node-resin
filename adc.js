@@ -60,27 +60,23 @@ client.on('connect', function() {
 });
 
 var Gpio = require('onoff').Gpio;
-var relay1 = new Gpio(67, 'low');
-var relay2 = new Gpio(68, 'low');
-var relay3 = new Gpio(44, 'low');
-var relay4 = new Gpio(26, 'low');
+var relay1 = new Gpio(67, 'high');
+var relay2 = new Gpio(68, 'high');
+var relay3 = new Gpio(44, 'high');
+var relay4 = new Gpio(26, 'high');
 var relay5 = new Gpio(46, 'low');
 var relay6 = new Gpio(65, 'low');
 var relay7 = new Gpio(47, 'low');
 var relay8 = new Gpio(27, 'low');
 
 
-relay1.write(1);
-relay2.write(0);
+// var Client = require("owfs").Client;
+// var con = new Client("localhost");
 
+// con.read("/10.8222EF010800/temperature", function(err, result){
+//     console.log(result);
+// })
 
-var Client = require("owfs").Client;
-var con = new Client("localhost");
-
-con.read("/10.8222EF010800/temperature", function(err, result){
-    console.log(result);
-})
-
-con.read("/28.3E7C2B040000/temperature", function(err, result){
-    console.log(result);
-})
+// con.read("/28.3E7C2B040000/temperature", function(err, result){
+//     console.log(result);
+// })
