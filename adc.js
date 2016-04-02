@@ -59,17 +59,7 @@ client.on('connect', function() {
     intervalId = setInterval(sendMsg, 5000);
 });
 
-var Gpio = require('onoff').Gpio;
-var relay1 = new Gpio(67, 'high');
-var relay2 = new Gpio(68, 'high');
-var relay3 = new Gpio(44, 'high');
-var relay4 = new Gpio(26, 'high');
-var relay5 = new Gpio(46, 'low');
-var relay6 = new Gpio(65, 'low');
-var relay7 = new Gpio(47, 'low');
-var relay8 = new Gpio(27, 'low');
-
-
+// OWFS stuff
 // var Client = require("owfs").Client;
 // var con = new Client("localhost");
 
