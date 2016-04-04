@@ -36,7 +36,7 @@ app.put("/api/gpio/:gpio", function(req, res) {
     res.end();
 });
 
-var server = app.listen(46588, function () {
+var server = app.listen(80, function () {
 
     var host = server.address().address;
     var port = server.address().port;

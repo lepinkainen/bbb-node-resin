@@ -12,3 +12,4 @@ function init() {
     var relay8 = new Gpio(27, 'high');
 }
 
+module.exports = init
