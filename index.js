@@ -3,7 +3,9 @@ var app = express()
 var ioserver = require('http').Server(app);
 var io = require('socket.io')(ioserver);
 
-var knockout = require("knockout");
+ioserver.listen(80);
+
+//var knockout = require("knockout");
 //var mygpio = require("./gpio");
 //mygpio.init();
 
@@ -13,7 +15,6 @@ console.log("starting automation manager...");
 var readADC = function() {
     voltage = Math.random();
 };
-
 
 //tell express to serve static files from html
 app.use(express.static(__dirname+"/html"));
