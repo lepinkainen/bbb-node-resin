@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express()
-var ioserver = require('http').Server(app);
-var io = require('socket.io')(ioserver);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-ioserver.listen(80);
+server.listen(80);
 
 //var knockout = require("knockout");
 //var mygpio = require("./gpio");
@@ -44,12 +44,4 @@ io.on('connection', function (socket) {
     socket.on('my other event', function (data) {
         console.log(data);
     });
-});
-
-var server = app.listen(80, function () {
-
-    var host = server.address().address;
-    var port = server.address().port;
-
-    console.log('App listening at http://%s:%s', host, port);
 });
