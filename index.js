@@ -1,8 +1,7 @@
 var express = require('express');
-var knockout = require("knockout");
-var mygpio = require("./gpio");
-
-mygpio.init();
+//var knockout = require("knockout");
+//var mygpio = require("./gpio");
+//mygpio.init();
 
 console.log("starting automation manager...");
 
@@ -13,6 +12,15 @@ var readADC = function() {
 
 // Webserver
 var app = express()
+app.configure(function() {
+    //tell express to serve static files from html
+    app.use(express.static(__dirname+"/html"));
+});
+
+app.get("/api/gpio/:number", function(req, res) {
+    res.send("Test");
+})
+
 app.get('/', function (req, res) {
     res.sendfile("html/index.html");
 })
@@ -57,15 +65,3 @@ client.on('connect', function() {
 
     intervalId = setInterval(sendMsg, 5000);
 });
-
-// OWFS stuff
-// var Client = require("owfs").Client;
-// var con = new Client("localhost");
-
-// con.read("/10.8222EF010800/temperature", function(err, result){
-//     console.log(result);
-// })
-
-// con.read("/28.3E7C2B040000/temperature", function(err, result){
-//     console.log(result);
-// })
