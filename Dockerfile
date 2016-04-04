@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -yq \
     mosquitto \
     mosquitto-clients \
     openssh-server \
+    dropbear \
     supervisor \
     cowsay && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
