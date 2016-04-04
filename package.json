@@ -3,17 +3,18 @@
   "name": "beaglebone-homeautomation",
   "license": "MIT",
   "description": "Home automation hub with BBB",
-  "version": "0.1.5",
+  "version": "0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/lepinkainen/bbb-node-resin"
   },
   "dependencies": {
-    "beaglebone-dht": "0.0.3",
+    "beaglebone-dht": "latest",
     "express": "latest",
-    "knockout": "^3.4.0",
+    "knockout": "latest",
     "mqtt": "latest",
     "onoff": "latest",
-    "owfs": "latest"
+    "owfs": "latest",
+    "socket.io": "latest"
   }
 }
