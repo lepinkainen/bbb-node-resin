@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -yq \
     python \
     mosquitto \
     mosquitto-clients \
-    dropbear \
+    openssh-server \
     supervisor \
     cowsay && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
