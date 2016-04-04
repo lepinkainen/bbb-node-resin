@@ -7,7 +7,7 @@ console.log("starting automation manager...");
 
 // Fake GPIO handling
 var readADC = function() {
-    voltage = Math.random()
+    voltage = Math.random();
 };
 
 // Webserver
@@ -17,21 +17,32 @@ app.configure(function() {
     app.use(express.static(__dirname+"/html"));
 });
 
-app.get("/api/gpio/:number", function(req, res) {
-    res.send("Test");
-})
+// Get states for all configured GPIO pins
+app.get("/api/gpio", function(req, res) {
+    res.json(200, [
+        { gpio: 67, value: 1 },
+        { gpio: 68, value: 1 },
+        { gpio: 44, value: 1 },
+        { gpio: 26, value: 1 },
+        { gpio: 46, value: 1 }
+    ]);
+    res.end();
+});
 
-app.get('/', function (req, res) {
-    res.sendfile("html/index.html");
-})
+// set single GPIO pin
+app.put("/api/gpio/:gpio", function(req, res) {
+    console.log(req.params.gpio+": " + JSON.stringify(req.body, null, 4));
+    res.send(200);
+    res.end();
+});
 
 var server = app.listen(80, function () {
 
-    var host = server.address().address
-    var port = server.address().port
+    var host = server.address().address;
+    var port = server.address().port;
 
-    console.log('App listening at http://%s:%s', host, port)
-})
+    console.log('App listening at http://%s:%s', host, port);
+});
 
 // Feed MQTT data to adafruit.io
 console.warn(process.env.AIO_FEED)
