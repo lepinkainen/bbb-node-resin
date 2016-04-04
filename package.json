@@ -11,6 +11,7 @@
   "dependencies": {
     "beaglebone-dht": "0.0.3",
     "express": "latest",
+    "knockout": "^3.4.0",
     "mqtt": "latest",
     "onoff": "latest",
     "owfs": "latest"

@@ -1,20 +1,20 @@
-console.log("starting automation manager...")
+var express = require('express');
+var knockout = require("knockout");
+var mygpio = require("./gpio");
+
+mygpio.init();
+
+console.log("starting automation manager...");
 
 // Fake GPIO handling
-var voltage = 0;
-
 var readADC = function() {
     voltage = Math.random()
 };
 
-setInterval(readADC, 3000);
-
 // Webserver
-var express = require('express')
 var app = express()
-
 app.get('/', function (req, res) {
-    res.send("The voltage is "+voltage);
+    res.sendfile("html/index.html");
 })
 
 var server = app.listen(80, function () {
@@ -22,9 +22,8 @@ var server = app.listen(80, function () {
     var host = server.address().address
     var port = server.address().port
 
-    console.log('Example app listening at http://%s:%s', host, port)
+    console.log('App listening at http://%s:%s', host, port)
 })
-
 
 // Feed MQTT data to adafruit.io
 console.warn(process.env.AIO_FEED)
@@ -47,7 +46,7 @@ client.on('connect', function() {
     });
 
     var sendMsg = function () {
-        var voltageMeasurement = voltage*10
+        var voltageMeasurement = readADC*10
         client.publish(process.env.AIO_FEED, ''+voltageMeasurement.toFixed(3));
     }
 
