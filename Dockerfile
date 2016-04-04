@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -yq \
     python \
     mosquitto \
     mosquitto-clients \
+    openssh-server \
     dropbear \
     supervisor \
     cowsay && \
