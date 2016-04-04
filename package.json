@@ -1,9 +1,9 @@
-{
+OB{
   "author": "Riku Lindblad",
   "name": "beaglebone-homeautomation",
   "license": "MIT",
   "description": "Home automation hub with BBB",
-  "version": "0.2",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/lepinkainen/bbb-node-resin"
