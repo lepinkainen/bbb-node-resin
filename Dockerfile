@@ -1,4 +1,3 @@
-#FROM resin/beaglebone-node:0.12
 FROM resin/beaglebone-node:4.3.2
 
 # Use apt-get to install any dependencies

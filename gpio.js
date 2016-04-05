@@ -1,15 +1,16 @@
 var onoff = require('onoff'); //load the library
 
-function init() {
-    var Gpio = onoff.Gpio;
-    var relay1 = new Gpio(67, 'high');
-    var relay2 = new Gpio(68, 'high');
-    var relay3 = new Gpio(44, 'high');
-    var relay4 = new Gpio(26, 'high');
-    var relay5 = new Gpio(46, 'high');
-    var relay6 = new Gpio(65, 'high');
-    var relay7 = new Gpio(47, 'high');
-    var relay8 = new Gpio(27, 'high');
-}
+// Reset all relays to set initial state
+module.exports.init = function(initialState) {
+    initialState = initialState || 'high';
 
-module.exports = init
+    var Gpio = onoff.Gpio;
+    var relay1 = new Gpio(67, initialState);
+    var relay2 = new Gpio(68, initialState);
+    var relay3 = new Gpio(44, initialState);
+    var relay4 = new Gpio(26, initialState);
+    var relay5 = new Gpio(46, initialState);
+    var relay6 = new Gpio(65, initialState);
+    var relay7 = new Gpio(47, initialState);
+    var relay8 = new Gpio(27, initialState);
+}
