@@ -26,14 +26,6 @@ RUN dpkg -i /tmp/influxdb_0.11.0-1_armhf.deb && rm /tmp/influxdb_0.11.0-1_armhf.
 # Change influxdb data to be stored in the persisting partition
 RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf
 
-
-
-#ADD http://download.telldus.se/TellStick/Software/telldus-core/telldus-core-2.1.1.tar.gz /tmp/telldus-core-2.1.1.tar.gz
-#WORKDIR /tmp/
-#RUN tar zxf /tmp/telldus-core-2.1.1.tar.gz
-#WORKDIR /tmp/telldus-core-2.1.1
-#RUN cmake . && make && make install
-
 # Configuration for supervisord
 COPY supervisord.conf /usr/local/etc/supervisord.conf
 
