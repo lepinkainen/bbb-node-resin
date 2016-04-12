@@ -1,5 +1,9 @@
 FROM resin/beaglebone-node:4.3.2
 
+# Tellstick support
+RUN echo "deb http://download.telldus.com/debian/ stable main" >> /etc/apt/sources.list
+RUN apt-key adv --fetch-keys http://download.telldus.se/debian/telldus-public.key
+
 # Use apt-get to install any dependencies
 RUN apt-get update && apt-get install -yq \
     owfs \
@@ -10,15 +14,25 @@ RUN apt-get update && apt-get install -yq \
     openssh-server \
     dropbear \
     supervisor \
+    telldus-core \
+    libftdi1 \
     cowsay && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install influxdb
-RUN wget -O /tmp/influxdb_0.11.0-1_armhf.deb https://s3.amazonaws.com/influxdb/influxdb_0.11.0-1_armhf.deb && \
-    dpkg -i /tmp/influxdb_0.11.0-1_armhf.deb && rm /tmp/influxdb_0.11.0-1_armhf.deb
+ADD https://s3.amazonaws.com/influxdb/influxdb_0.11.0-1_armhf.deb /tmp/influxdb_0.11.0-1_armhf.deb
+RUN dpkg -i /tmp/influxdb_0.11.0-1_armhf.deb && rm /tmp/influxdb_0.11.0-1_armhf.deb
 
 # Change influxdb data to be stored in the persisting partition
 RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf
+
+
+
+#ADD http://download.telldus.se/TellStick/Software/telldus-core/telldus-core-2.1.1.tar.gz /tmp/telldus-core-2.1.1.tar.gz
+#WORKDIR /tmp/
+#RUN tar zxf /tmp/telldus-core-2.1.1.tar.gz
+#WORKDIR /tmp/telldus-core-2.1.1
+#RUN cmake . && make && make install
 
 # Configuration for supervisord
 COPY supervisord.conf /usr/local/etc/supervisord.conf
