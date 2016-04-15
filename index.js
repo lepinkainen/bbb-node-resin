@@ -22,7 +22,7 @@ app.use('/scripts', express.static(__dirname+"/scripts"));
 
 // Get states for all configured GPIO pins
 app.get("/api/gpio", function(req, res) {
-    res.json(200, [
+    res.status(200).json([
         { gpio: 67, value: 1 },
         { gpio: 68, value: 1 },
         { gpio: 44, value: 1 },
