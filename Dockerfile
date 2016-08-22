@@ -20,8 +20,10 @@ RUN apt-get update && apt-get install -yq \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install influxdb
-ADD https://s3.amazonaws.com/influxdb/influxdb_0.11.0-1_armhf.deb /tmp/influxdb_0.11.0-1_armhf.deb
-RUN dpkg -i /tmp/influxdb_0.11.0-1_armhf.deb && rm /tmp/influxdb_0.11.0-1_armhf.deb
+ADD https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb /tmp/influxdb_armhf.deb
+RUN dpkg -i /tmp/influxdb_armhf.deb && rm /tmp/influxdb_armhf.deb
+#ADD https://s3.amazonaws.com/influxdb/influxdb_0.11.0-1_armhf.deb /tmp/influxdb_0.11.0-1_armhf.deb
+#RUN dpkg -i /tmp/influxdb_0.11.0-1_armhf.deb && rm /tmp/influxdb_0.11.0-1_armhf.deb
 
 # Change influxdb data to be stored in the persisting partition
 RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf

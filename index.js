@@ -6,8 +6,8 @@ var io = require('socket.io')(server);
 server.listen(80);
 
 //var knockout = require("knockout");
-//var mygpio = require("./gpio");
-//mygpio.init();
+var mygpio = require("./gpio");
+mygpio.init();
 
 console.log("starting automation manager...");
 
